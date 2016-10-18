@@ -14,7 +14,9 @@
 		D319EC851DB04279008E2464 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D319EC831DB04279008E2464 /* LaunchScreen.storyboard */; };
 		D3427B261DB567140086B4E1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B251DB567140086B4E1 /* Question.swift */; };
 		D3427B281DB567220086B4E1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B271DB567220086B4E1 /* Game.swift */; };
-		D3427B2A1DB56B5E0086B4E1 /* QuestionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B291DB56B5E0086B4E1 /* QuestionButton.swift */; };
+		D3427B2A1DB56B5E0086B4E1 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */; };
+		D362E33B1DB6CF5C00AD5DDD /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362E33A1DB6CF5C00AD5DDD /* GameOverViewController.swift */; };
+		D362E33D1DB6D43200AD5DDD /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362E33C1DB6D43200AD5DDD /* GameTimer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,7 +29,9 @@
 		D319EC861DB04279008E2464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D3427B251DB567140086B4E1 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D3427B271DB567220086B4E1 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		D3427B291DB56B5E0086B4E1 /* QuestionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionButton.swift; sourceTree = "<group>"; };
+		D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
+		D362E33A1DB6CF5C00AD5DDD /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		D362E33C1DB6D43200AD5DDD /* GameTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,7 +72,9 @@
 				D319EC861DB04279008E2464 /* Info.plist */,
 				D3427B251DB567140086B4E1 /* Question.swift */,
 				D3427B271DB567220086B4E1 /* Game.swift */,
-				D3427B291DB56B5E0086B4E1 /* QuestionButton.swift */,
+				D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */,
+				D362E33A1DB6CF5C00AD5DDD /* GameOverViewController.swift */,
+				D362E33C1DB6D43200AD5DDD /* GameTimer.swift */,
 			);
 			path = PoliticalParty;
 			sourceTree = "<group>";
@@ -145,8 +151,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D3427B2A1DB56B5E0086B4E1 /* QuestionButton.swift in Sources */,
+				D3427B2A1DB56B5E0086B4E1 /* AnswerButton.swift in Sources */,
 				D3427B281DB567220086B4E1 /* Game.swift in Sources */,
+				D362E33B1DB6CF5C00AD5DDD /* GameOverViewController.swift in Sources */,
+				D362E33D1DB6D43200AD5DDD /* GameTimer.swift in Sources */,
 				D3427B261DB567140086B4E1 /* Question.swift in Sources */,
 				D319EC7D1DB04279008E2464 /* GameViewController.swift in Sources */,
 				D319EC7B1DB04279008E2464 /* AppDelegate.swift in Sources */,
