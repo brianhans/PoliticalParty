@@ -17,6 +17,8 @@
 		D3427B2A1DB56B5E0086B4E1 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */; };
 		D362E33B1DB6CF5C00AD5DDD /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362E33A1DB6CF5C00AD5DDD /* GameOverViewController.swift */; };
 		D362E33D1DB6D43200AD5DDD /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D362E33C1DB6D43200AD5DDD /* GameTimer.swift */; };
+		D3A618201DB97ED80092DE7C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A6181F1DB97ED80092DE7C /* Constants.swift */; };
+		D3A618221DB980FD0092DE7C /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A618211DB980FD0092DE7C /* StartScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
 		D362E33A1DB6CF5C00AD5DDD /* GameOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
 		D362E33C1DB6D43200AD5DDD /* GameTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
+		D3A6181F1DB97ED80092DE7C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		D3A618211DB980FD0092DE7C /* StartScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */,
 				D362E33A1DB6CF5C00AD5DDD /* GameOverViewController.swift */,
 				D362E33C1DB6D43200AD5DDD /* GameTimer.swift */,
+				D3A6181F1DB97ED80092DE7C /* Constants.swift */,
+				D3A618211DB980FD0092DE7C /* StartScreenViewController.swift */,
 			);
 			path = PoliticalParty;
 			sourceTree = "<group>";
@@ -154,10 +160,12 @@
 				D3427B2A1DB56B5E0086B4E1 /* AnswerButton.swift in Sources */,
 				D3427B281DB567220086B4E1 /* Game.swift in Sources */,
 				D362E33B1DB6CF5C00AD5DDD /* GameOverViewController.swift in Sources */,
+				D3A618221DB980FD0092DE7C /* StartScreenViewController.swift in Sources */,
 				D362E33D1DB6D43200AD5DDD /* GameTimer.swift in Sources */,
 				D3427B261DB567140086B4E1 /* Question.swift in Sources */,
 				D319EC7D1DB04279008E2464 /* GameViewController.swift in Sources */,
 				D319EC7B1DB04279008E2464 /* AppDelegate.swift in Sources */,
+				D3A618201DB97ED80092DE7C /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,18 +25,28 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
     let questionTime: Double = 10
     var timer: Timer!
     
+    var countDown: Bool = false{
+        didSet{
+            if(countDown){
+                startTime = NSDate.timeIntervalSinceReferenceDate
+                let runLoop = RunLoop.current
+                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                runLoop.add(timer, forMode: RunLoopMode.commonModes)
+                runLoop.add(timer, forMode: RunLoopMode.UITrackingRunLoopMode)
+            }else{
+                timer.invalidate()
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         buttons = [question1btn, question2btn, question3btn, question4btn]
         game = Game(self)
         
-        //Sets up timer
-        startTime = NSDate.timeIntervalSinceReferenceDate
-        let runLoop = RunLoop.current
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
-        runLoop.add(timer, forMode: RunLoopMode.commonModes)
-        runLoop.add(timer, forMode: RunLoopMode.UITrackingRunLoopMode)
+
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -44,15 +54,19 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        timer.invalidate()
+        countDown = false
     }
     
     func newQuestion(question: Question) {
-        questionLabel.text = question.text
+        countDown = true
+        self.questionLabel.text = question.text
         for i in 0..<question.options.count{
-            buttons[i].answer = question.options[i]
+            self.buttons[i].answer = question.options[i]
+            self.buttons[i].isSelected = false
         }
-        startTime = NSDate.timeIntervalSinceReferenceDate
+        self.startTime = NSDate.timeIntervalSinceReferenceDate
+        
+        
     }
     
     func gameOver() {
@@ -60,10 +74,19 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
     }
     
     func pressed(sender: AnswerButton) {
-        if(!game.checkAnswer(answer: sender.answer)){
-            print("wrong")
-        }else{
-            print("correct")
+        sender.isSelected = true
+        selectRightAnswer()
+        
+        //Prevent issues with timer
+        countDown = false
+        
+        //Delay 4 seconds so they can see correct answer
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)) {
+            if(!self.game.checkAnswer(answer: sender.answer)){
+                print("wrong")
+            }else{
+                print("correct")
+            }
         }
     }
     
@@ -71,6 +94,15 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         if(segue.identifier == "GameOver"){
             let controller = segue.destination as! GameOverViewController
             controller.game = self.game
+        }
+    }
+    
+    func selectRightAnswer(){
+        for button in buttons{
+            if(button.answer.correct){
+                button.isSelected = true
+                return
+            }
         }
     }
     

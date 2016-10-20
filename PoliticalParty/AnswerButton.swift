@@ -14,6 +14,17 @@ class AnswerButton: UIButton{
             self.setTitle(answer.text, for: .normal)
         }
     }
+    
+    override var isSelected: Bool{
+        didSet{
+            if(isSelected){
+                self.backgroundColor = answer.correct ? UIColor.green : UIColor.red
+            }else{
+                self.backgroundColor = .clear
+            }
+        }
+    }
+    
     @IBOutlet var delegate: AnswerButtonDelegate!
     
     override init(frame: CGRect) {
@@ -23,7 +34,6 @@ class AnswerButton: UIButton{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.addTarget(self, action: #selector(tapped), for: .touchUpInside)
-
     }
     
     func tapped(){
