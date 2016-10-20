@@ -22,6 +22,9 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
     var buttons: [AnswerButton] = []
     var startTime: TimeInterval!
     
+    let questionTime: Double = 10
+    var timer: Timer!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +34,7 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         //Sets up timer
         startTime = NSDate.timeIntervalSinceReferenceDate
         let runLoop = RunLoop.current
-        let timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
         runLoop.add(timer, forMode: RunLoopMode.commonModes)
         runLoop.add(timer, forMode: RunLoopMode.UITrackingRunLoopMode)
     }
@@ -40,6 +43,10 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         super.didReceiveMemoryWarning()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        timer.invalidate()
+    }
+    
     func newQuestion(question: Question) {
         questionLabel.text = question.text
         for i in 0..<question.options.count{
@@ -69,10 +76,10 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
     
     func updateTimer(){
         let currentTimeDifference = NSDate.timeIntervalSinceReferenceDate - startTime
-        if(currentTimeDifference <= 0){
+        if(questionTime - currentTimeDifference <= 0){
             game.timeUp()
         }else{
-            timerLabel.text = String(Int(10 - currentTimeDifference))
+            timerLabel.text = String(Int(questionTime - currentTimeDifference))
         }
         
     }

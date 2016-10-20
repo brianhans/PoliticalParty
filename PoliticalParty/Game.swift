@@ -28,7 +28,7 @@ class Game{
         self.delegate = delegate
         delegate.newQuestion(question: questions[0])
     }
-    
+
     func generateQuestions() -> [Question]{
         var questions: [Question] = []
         questions.append(Question(text: "In what year was the Constitution signed?", category: .history, options: [Answer(text: "1787", correct: true), Answer(text: "1776", correct: false), Answer(text: "1790", correct: false), Answer(text: "1782", correct: false)]))
