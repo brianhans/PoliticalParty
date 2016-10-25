@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class Constants{
     static let highScore = "highScore"
@@ -16,4 +17,6 @@ class Constants{
     static let answer2 = "2"
     static let answer3 = "3"
     static let answer4 = "4"
+    
+    static let buttonBackgroundColor = UIColor(colorLiteralRed: Float(181.0/255), green: Float(183.0/255), blue: Float(185.0/255), alpha: 1)
 }

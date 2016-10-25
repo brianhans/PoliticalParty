@@ -18,9 +18,9 @@ class AnswerButton: UIButton{
     override var isSelected: Bool{
         didSet{
             if(isSelected){
-                self.backgroundColor = answer.correct ? UIColor.green : UIColor.red
+                self.backgroundColor = answer.correct ? UIColor(colorLiteralRed: Float(0.0/255), green: Float(174.0/255), blue: Float(93.0/255), alpha: 1) : UIColor(colorLiteralRed: Float(210.0/255), green: Float(78.0/255), blue: Float(80.0/255), alpha: 1)
             }else{
-                self.backgroundColor = .clear
+                self.backgroundColor = Constants.buttonBackgroundColor
             }
         }
     }

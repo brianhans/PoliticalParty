@@ -11,9 +11,13 @@ import Foundation
 class Game{
     
     var correct: [Question] = []
-    var incorrect: [Question] = []
+    var incorrect: [Question] = []{
+        didSet{
+            print(incorrect.last ?? "")
+        }
+    }
     var questions: [Question]
-
+    
     init(){
         questions = []
         self.questions = generateQuestions(amount: 10)
@@ -22,7 +26,7 @@ class Game{
     init(questions: [Question]){
         self.questions = questions
     }
-
+    
     func generateQuestions(amount: Int) -> [Question]{
         var allQuestions: [Question] = []
         var tempQuestions: [Question] = []
@@ -49,7 +53,7 @@ class Game{
         for _ in 0..<amount{
             let randomNumber = Int(arc4random_uniform(UInt32(allQuestions.count - 1)))
             print(randomNumber)
-             tempQuestions.append(allQuestions.remove(at: randomNumber))
+            tempQuestions.append(allQuestions.remove(at: randomNumber))
         }
         
         
@@ -74,7 +78,10 @@ class Game{
     }
     
     func timeUp(){
-        incorrect.append(questions.removeFirst())
+        if questions.count > 0{
+            incorrect.append(questions.removeFirst())
+        }
+        
     }
-
+    
 }

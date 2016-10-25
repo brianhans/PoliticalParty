@@ -17,6 +17,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     @IBOutlet weak var question4btn: AnswerButton!
     
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     
     var game: Game!
     var buttons: [AnswerButton] = []
@@ -30,7 +31,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
             if(countDown){
                 startTime = NSDate.timeIntervalSinceReferenceDate
                 let runLoop = RunLoop.current
-                timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+                timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
                 runLoop.add(timer, forMode: RunLoopMode.commonModes)
                 runLoop.add(timer, forMode: RunLoopMode.UITrackingRunLoopMode)
             }else{
@@ -59,6 +60,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     func setupQuestion(question: Question) {
         countDown = true
         self.questionLabel.text = question.text
+        self.categoryLabel.text = question.category.rawValue
         for i in 0..<question.options.count{
             self.buttons[i].answer = question.options[i]
             self.buttons[i].isSelected = false
@@ -80,7 +82,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
         self.game.sendAnswer(answer: sender.answer)
         disableButtons()
         selectRightAnswer()
-        perform(#selector(nextQuestion), with: sender, afterDelay: 4)
+        perform(#selector(nextQuestion), with: sender, afterDelay: 2)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -112,6 +114,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     }
     
     func nextQuestion(){
+        countDown = false
         if let question = self.game.getNextQuestion(){
             setupQuestion(question: question)
         }else{
@@ -133,7 +136,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if(!countDown){
-            NSObject.cancelPreviousPerformRequests(withTarget: #selector(nextQuestion))
+            NSObject.cancelPreviousPerformRequests(withTarget: self)
             nextQuestion()
         }
     }
