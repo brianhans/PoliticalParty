@@ -25,7 +25,7 @@ class GameOverViewController: UIViewController{
         }
         
         scoreLabel.text = String(currentScore)
-        highScoreLabel.text = String(highScore)
+        //highScoreLabel.text = String(highScore)
     }
     
 }

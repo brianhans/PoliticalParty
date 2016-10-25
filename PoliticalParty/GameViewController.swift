@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
+class GameViewController: UIViewController, AnswerButtonDelegate {
 
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var question1btn: AnswerButton!
@@ -43,9 +43,8 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         super.viewDidLoad()
 
         buttons = [question1btn, question2btn, question3btn, question4btn]
-        game = Game(self)
-        
-
+        game = Game()
+        setupQuestion(question: game.getNextQuestion()!)
         
     }
 
@@ -57,21 +56,18 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         countDown = false
     }
     
-    func newQuestion(question: Question) {
+    func setupQuestion(question: Question) {
         countDown = true
         self.questionLabel.text = question.text
         for i in 0..<question.options.count{
             self.buttons[i].answer = question.options[i]
             self.buttons[i].isSelected = false
         }
+        
+        enableButtons()
         self.startTime = NSDate.timeIntervalSinceReferenceDate
-        
-        
     }
     
-    func gameOver() {
-        performSegue(withIdentifier: "GameOver", sender: nil)
-    }
     
     func pressed(sender: AnswerButton) {
         sender.isSelected = true
@@ -81,13 +77,10 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         countDown = false
         
         //Delay 4 seconds so they can see correct answer
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4)) {
-            if(!self.game.checkAnswer(answer: sender.answer)){
-                print("wrong")
-            }else{
-                print("correct")
-            }
-        }
+        self.game.sendAnswer(answer: sender.answer)
+        disableButtons()
+        selectRightAnswer()
+        perform(#selector(nextQuestion), with: sender, afterDelay: 4)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -106,14 +99,43 @@ class GameViewController: UIViewController, GameDelegate, AnswerButtonDelegate {
         }
     }
     
+    func disableButtons(){
+        for button in buttons{
+            button.isUserInteractionEnabled = false
+        }
+    }
+    
+    func enableButtons(){
+        for button in buttons{
+            button.isUserInteractionEnabled = true
+        }
+    }
+    
+    func nextQuestion(){
+        if let question = self.game.getNextQuestion(){
+            setupQuestion(question: question)
+        }else{
+            performSegue(withIdentifier: "GameOver", sender: nil)
+        }
+    }
+    
     func updateTimer(){
         let currentTimeDifference = NSDate.timeIntervalSinceReferenceDate - startTime
         if(questionTime - currentTimeDifference <= 0){
             game.timeUp()
+            countDown = false
+            nextQuestion()
         }else{
             timerLabel.text = String(Int(questionTime - currentTimeDifference))
         }
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if(!countDown){
+            NSObject.cancelPreviousPerformRequests(withTarget: #selector(nextQuestion))
+            nextQuestion()
+        }
     }
     
 }

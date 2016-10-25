@@ -37,4 +37,8 @@ class StartScreenViewController: UIViewController{
             
         }
     }
+    @IBAction func startButtonPressed(_ sender: AnyObject) {
+        let viewController = GameViewController()
+        present(viewController, animated: true, completion: nil)
+    }
 }

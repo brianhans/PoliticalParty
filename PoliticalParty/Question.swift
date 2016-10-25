@@ -21,11 +21,19 @@ class Question{
     
     init(json: [String : String]){
         self.text = json[Constants.question]!
-        self.options = [Answer(text: json[Constants.answer1]!, correct: true),
-                        Answer(text: json[Constants.answer2]!, correct: false),
-                        Answer(text: json[Constants.answer3]!, correct: false),
-                        Answer(text: json[Constants.answer4]!, correct: false)]
-        self.category = QuestionCategory(rawValue: json[Constants.category]!)!
+        
+        self.options = [];
+
+        var answers = [Answer(text: json[Constants.answer1]!, correct: true),
+                       Answer(text: json[Constants.answer2]!, correct: false),
+                       Answer(text: json[Constants.answer3]!, correct: false),
+                       Answer(text: json[Constants.answer4]!, correct: false)]
+
+        for _ in 0..<4{
+            options.append(answers.remove(at: Int(arc4random_uniform(UInt32(answers.count - 1)))))
+        }
+        
+        self.category = QuestionCategory(rawValue: json[Constants.category]!.lowercased())!
     }
 }
 
@@ -40,5 +48,5 @@ class Answer{
 }
 
 enum QuestionCategory: String{
-    case history, candidates, policies
+    case history, canidates, policies
 }

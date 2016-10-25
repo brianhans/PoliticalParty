@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartScreenViewController" customModule="PoliticalParty" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -22,7 +22,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMW-eQ-hCX">
                                 <state key="normal" title="Start"/>
                                 <connections>
-                                    <segue destination="iVg-SJ-nuY" kind="show" id="kcr-hw-qn4"/>
+                                    <segue destination="iVg-SJ-nuY" kind="show" id="SLX-eA-JMU"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -96,11 +96,11 @@
                             <constraint firstItem="Jyi-mf-k33" firstAttribute="centerX" secondItem="Y9I-d3-4Kn" secondAttribute="centerX" id="NHU-HD-0Xu"/>
                             <constraint firstItem="TW2-eZ-2l2" firstAttribute="top" secondItem="yft-5v-EsF" secondAttribute="bottom" constant="20" id="OQf-7M-ujr"/>
                             <constraint firstItem="Ac1-p7-afc" firstAttribute="leading" secondItem="Y9I-d3-4Kn" secondAttribute="leadingMargin" constant="40" id="VHv-hD-JIi"/>
-                            <constraint firstItem="yft-5v-EsF" firstAttribute="top" secondItem="rSr-sm-kfG" secondAttribute="bottom" constant="80" id="dbD-8t-woi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yft-5v-EsF" secondAttribute="trailing" constant="40" id="dlU-1D-uhM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="rSr-sm-kfG" secondAttribute="trailing" id="gFO-Pz-J8l"/>
                             <constraint firstItem="rSr-sm-kfG" firstAttribute="top" secondItem="Jyi-mf-k33" secondAttribute="bottom" constant="10" id="gKr-vh-WcO"/>
                             <constraint firstItem="TW2-eZ-2l2" firstAttribute="leading" secondItem="Y9I-d3-4Kn" secondAttribute="leadingMargin" constant="40" id="gmg-7r-c6Y"/>
+                            <constraint firstItem="wZP-LP-j7e" firstAttribute="top" secondItem="Ac1-p7-afc" secondAttribute="bottom" constant="30" id="kyU-cj-deh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ac1-p7-afc" secondAttribute="trailing" constant="40" id="l1B-zF-s9b"/>
                             <constraint firstItem="obp-0l-ZRx" firstAttribute="leading" secondItem="Y9I-d3-4Kn" secondAttribute="leadingMargin" constant="40" id="o99-wO-wU4"/>
                             <constraint firstItem="rSr-sm-kfG" firstAttribute="leading" secondItem="Y9I-d3-4Kn" secondAttribute="leadingMargin" id="r9X-77-Ep1"/>

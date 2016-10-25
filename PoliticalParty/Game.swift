@@ -13,60 +13,68 @@ class Game{
     var correct: [Question] = []
     var incorrect: [Question] = []
     var questions: [Question]
-    
-    var delegate: GameDelegate
 
-    init(_ delegate: GameDelegate){
-        self.delegate = delegate
+    init(){
         questions = []
-        self.questions = generateQuestions()
-        delegate.newQuestion(question: questions[0])
+        self.questions = generateQuestions(amount: 10)
     }
     
-    init(_ delegate: GameDelegate, questions: [Question]){
+    init(questions: [Question]){
         self.questions = questions
-        self.delegate = delegate
-        delegate.newQuestion(question: questions[0])
     }
 
-    func generateQuestions() -> [Question]{
-        var questions: [Question] = []
-        questions.append(Question(text: "In what year was the Constitution signed?", category: .history, options: [Answer(text: "1787", correct: true), Answer(text: "1776", correct: false), Answer(text: "1790", correct: false), Answer(text: "1782", correct: false)]))
+    func generateQuestions(amount: Int) -> [Question]{
+        var allQuestions: [Question] = []
+        var tempQuestions: [Question] = []
         
-        questions.append(Question(text: "What was not a former political party?", category: .history, options: [Answer(text: "Democratic-Republicans Party", correct: false), Answer(text: "Whigs", correct: false), Answer(text: "Anti-Masonic Party", correct: false), Answer(text: "Tax-free Party", correct: true)]))
+        if let path = Bundle.main.path(forResource: "questions", ofType: "js")
+        {
+            do{
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.dataReadingMapped)
+                if let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
+                {
+                    if let questions = jsonResult["questions"] as? [[String: String]]
+                    {
+                        for question in questions{
+                            allQuestions.append(Question(json: question))
+                        }
+                    }
+                }
+            }catch{
+                print("error" + #function)
+            }
+            
+        }
         
-        return questions
+        for _ in 0..<amount{
+            let randomNumber = Int(arc4random_uniform(UInt32(allQuestions.count - 1)))
+            print(randomNumber)
+             tempQuestions.append(allQuestions.remove(at: randomNumber))
+        }
+        
+        
+        return tempQuestions
     }
     
-    func checkAnswer(answer: Answer) -> Bool{
+    func sendAnswer(answer: Answer){
         
         if(answer.correct){
             correct.append(questions.removeFirst())
         }else{
             incorrect.append(questions.removeFirst())
         }
-        
+    }
+    
+    func getNextQuestion() -> Question?{
         if(questions.count < 1){
-            delegate.gameOver()
+            return nil
         }else{
-            delegate.newQuestion(question: questions[0])
+            return questions[0]
         }
-        
-        return answer.correct
     }
     
     func timeUp(){
         incorrect.append(questions.removeFirst())
-        if(questions.count < 1){
-            delegate.gameOver()
-        }else{
-            delegate.newQuestion(question: questions[0])
-        }
     }
 
-}
-
-protocol GameDelegate {
-    func newQuestion(question: Question)
-    func gameOver()
 }

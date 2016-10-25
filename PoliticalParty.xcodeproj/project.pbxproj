@@ -12,6 +12,7 @@
 		D319EC801DB04279008E2464 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D319EC7E1DB04279008E2464 /* Main.storyboard */; };
 		D319EC821DB04279008E2464 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D319EC811DB04279008E2464 /* Assets.xcassets */; };
 		D319EC851DB04279008E2464 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D319EC831DB04279008E2464 /* LaunchScreen.storyboard */; };
+		D31D6A781DBFFD620016151F /* questions.js in Resources */ = {isa = PBXBuildFile; fileRef = D31D6A771DBFFD620016151F /* questions.js */; };
 		D3427B261DB567140086B4E1 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B251DB567140086B4E1 /* Question.swift */; };
 		D3427B281DB567220086B4E1 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B271DB567220086B4E1 /* Game.swift */; };
 		D3427B2A1DB56B5E0086B4E1 /* AnswerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */; };
@@ -29,6 +30,7 @@
 		D319EC811DB04279008E2464 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D319EC841DB04279008E2464 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D319EC861DB04279008E2464 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D31D6A771DBFFD620016151F /* questions.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = questions.js; sourceTree = "<group>"; };
 		D3427B251DB567140086B4E1 /* Question.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		D3427B271DB567220086B4E1 /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		D3427B291DB56B5E0086B4E1 /* AnswerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnswerButton.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		D319EC791DB04279008E2464 /* PoliticalParty */ = {
 			isa = PBXGroup;
 			children = (
+				D31D6A771DBFFD620016151F /* questions.js */,
 				D319EC7A1DB04279008E2464 /* AppDelegate.swift */,
 				D319EC7C1DB04279008E2464 /* GameViewController.swift */,
 				D319EC7E1DB04279008E2464 /* Main.storyboard */,
@@ -117,6 +120,7 @@
 				TargetAttributes = {
 					D319EC761DB04279008E2464 = {
 						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = T9X8M5MFNM;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -146,6 +150,7 @@
 			files = (
 				D319EC851DB04279008E2464 /* LaunchScreen.storyboard in Resources */,
 				D319EC821DB04279008E2464 /* Assets.xcassets in Resources */,
+				D31D6A781DBFFD620016151F /* questions.js in Resources */,
 				D319EC801DB04279008E2464 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -288,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T9X8M5MFNM;
 				INFOPLIST_FILE = PoliticalParty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brianhans.PoliticalParty;
@@ -300,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = T9X8M5MFNM;
 				INFOPLIST_FILE = PoliticalParty/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.brianhans.PoliticalParty;
