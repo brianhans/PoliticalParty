@@ -20,21 +20,21 @@ class Game{
     
     init(){
         questions = []
-        self.questions = generateQuestions(amount: 10)
+        self.questions = generateQuestions(10)
     }
     
     init(questions: [Question]){
         self.questions = questions
     }
     
-    func generateQuestions(amount: Int) -> [Question]{
+    func generateQuestions(_ amount: Int) -> [Question]{
         var allQuestions: [Question] = []
         var tempQuestions: [Question] = []
         
         if let path = Bundle.main.path(forResource: "questions", ofType: "js")
         {
             do{
-                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.dataReadingMapped)
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.dataReadingMapped)
                 if let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
                 {
                     if let questions = jsonResult["questions"] as? [[String: String]]
@@ -60,12 +60,14 @@ class Game{
         return tempQuestions
     }
     
-    func sendAnswer(answer: Answer){
+    func sendAnswer(_ answer: Answer) -> Bool{
         
         if(answer.correct){
             correct.append(questions.removeFirst())
+            return true
         }else{
             incorrect.append(questions.removeFirst())
+            return false
         }
     }
     

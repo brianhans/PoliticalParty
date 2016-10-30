@@ -20,7 +20,7 @@ class StartScreenViewController: UIViewController{
         if let path = Bundle.main.path(forResource: "questions", ofType: "json")
         {
             do{
-                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.dataReadingMapped)
+                let jsonData = try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.dataReadingMapped)
                 if let jsonResult: NSDictionary = try JSONSerialization.jsonObject(with: jsonData, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary
                 {
                     if let questions = jsonResult["questions"] as? [[String: String]]

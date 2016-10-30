@@ -29,7 +29,7 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     var countDown: Bool = false{
         didSet{
             if(countDown){
-                startTime = NSDate.timeIntervalSinceReferenceDate
+                startTime = Date.timeIntervalSinceReferenceDate
                 let runLoop = RunLoop.current
                 timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
                 runLoop.add(timer, forMode: RunLoopMode.commonModes)
@@ -42,10 +42,9 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         buttons = [question1btn, question2btn, question3btn, question4btn]
         game = Game()
-        setupQuestion(question: game.getNextQuestion()!)
+        setupQuestion(game.getNextQuestion()!)
         
     }
 
@@ -57,7 +56,11 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
         countDown = false
     }
     
-    func setupQuestion(question: Question) {
+    override func viewDidAppear(_ animated: Bool) {
+        self.buttons[0].animate()
+    }
+    
+    func setupQuestion(_ question: Question) {
         countDown = true
         self.questionLabel.text = question.text
         self.categoryLabel.text = question.category.rawValue
@@ -67,11 +70,11 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
         }
         
         enableButtons()
-        self.startTime = NSDate.timeIntervalSinceReferenceDate
+        self.startTime = Date.timeIntervalSinceReferenceDate
     }
     
     
-    func pressed(sender: AnswerButton) {
+    func pressed(_ sender: AnswerButton) {
         sender.isSelected = true
         selectRightAnswer()
         
@@ -79,7 +82,10 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
         countDown = false
         
         //Delay 4 seconds so they can see correct answer
-        self.game.sendAnswer(answer: sender.answer)
+        if(!self.game.sendAnswer(sender.answer)){
+            sender.animation = "shake"
+            sender.animate()
+        }
         disableButtons()
         selectRightAnswer()
         perform(#selector(nextQuestion), with: sender, afterDelay: 2)
@@ -116,14 +122,23 @@ class GameViewController: UIViewController, AnswerButtonDelegate {
     func nextQuestion(){
         countDown = false
         if let question = self.game.getNextQuestion(){
-            setupQuestion(question: question)
+            for button in buttons{
+                button.animation = "zoomOut"
+                button.animateTo()
+                button.animateNext(completion: { 
+                    button.animation = "pop"
+                    button.animate()
+                })
+            }
+            
+            setupQuestion(question)
         }else{
             performSegue(withIdentifier: "GameOver", sender: nil)
         }
     }
     
     func updateTimer(){
-        let currentTimeDifference = NSDate.timeIntervalSinceReferenceDate - startTime
+        let currentTimeDifference = Date.timeIntervalSinceReferenceDate - startTime
         if(questionTime - currentTimeDifference <= 0){
             game.timeUp()
             countDown = false

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Spring
 
-class AnswerButton: UIButton{
+class AnswerButton: SpringButton{
     var answer: Answer!{
         didSet{
             self.setTitle(answer.text, for: .normal)
@@ -33,15 +34,16 @@ class AnswerButton: UIButton{
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.animation = "fadeIn"
         self.addTarget(self, action: #selector(tapped), for: .touchUpInside)
     }
     
     func tapped(){
-        delegate.pressed(sender: self)
+        delegate.pressed(self)
     }
     
 }
 
 @objc protocol AnswerButtonDelegate {
-    func pressed(sender: AnswerButton)
+    func pressed(_ sender: AnswerButton)
 }
