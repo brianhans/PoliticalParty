@@ -264,6 +264,12 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="High Score:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kcb-tI-cxx">
+                                <rect key="frame" x="137" y="52" width="90" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.17254901960784313" green="0.16470588235294117" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -271,11 +277,13 @@
                             <constraint firstItem="IqF-xx-8Pn" firstAttribute="top" secondItem="DBU-MX-OE0" secondAttribute="bottom" constant="8" id="5sA-jP-YGW"/>
                             <constraint firstItem="IqF-xx-8Pn" firstAttribute="leading" secondItem="vj6-Wv-q0a" secondAttribute="leadingMargin" constant="65" id="7M7-nu-Tug"/>
                             <constraint firstItem="rT0-4R-tCb" firstAttribute="centerX" secondItem="vj6-Wv-q0a" secondAttribute="centerX" constant="-5.5" id="D2r-Yu-awj"/>
+                            <constraint firstItem="Kcb-tI-cxx" firstAttribute="centerX" secondItem="rT0-4R-tCb" secondAttribute="centerX" id="E0O-aR-3fl"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IqF-xx-8Pn" secondAttribute="trailing" constant="65" id="IFM-04-4dX"/>
                             <constraint firstItem="rT0-4R-tCb" firstAttribute="top" secondItem="j9M-br-ZbD" secondAttribute="bottom" constant="61" id="QLS-LA-lpH"/>
                             <constraint firstItem="DBU-MX-OE0" firstAttribute="centerX" secondItem="vj6-Wv-q0a" secondAttribute="centerX" id="SCO-ka-7ee"/>
                             <constraint firstItem="GZP-8s-LcI" firstAttribute="centerX" secondItem="vj6-Wv-q0a" secondAttribute="centerX" id="XTO-Vb-IHI"/>
                             <constraint firstItem="IqF-xx-8Pn" firstAttribute="centerX" secondItem="vj6-Wv-q0a" secondAttribute="centerX" id="Zqa-wg-6vs"/>
+                            <constraint firstItem="rT0-4R-tCb" firstAttribute="top" secondItem="Kcb-tI-cxx" secondAttribute="bottom" constant="8" id="f3v-d2-Idh"/>
                             <constraint firstItem="GZP-8s-LcI" firstAttribute="top" secondItem="IqF-xx-8Pn" secondAttribute="bottom" constant="89" id="vPJ-le-qGf"/>
                         </constraints>
                     </view>
